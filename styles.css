@@ -1,3 +1,120 @@
+@font-face {
+  font-family: "Redacted";
+  src: url('assets/Redaction_70-Bold.woff2') format("woff2");
+}
+@font-face {
+  font-family: "Redacted2";
+  src: url('assets/Redaction_35-Regular.woff2') format("woff2");
+}
+:root{
+  --red: rgb(195, 0, 0);
+  --gold: rgb(195, 133, 0);
+  --black: rgb(25, 1, 1);
+  --brown: rgb(78, 25, 12);
+  --space: 50px;
+  --font-size-large: 50px;
+  --font-small-size: 24px;
+  --font-tiny-size: 14px;
+}
+
+
+body{
+    background-color: var(--black);
+    margin:0;
+    color: var(--gold);
+}
 canvas{
     background-color: rgba(0,0,0,0);
+    opacity:1;
+    transition:0.2s;
+    position: fixed;
+    width:100vw;
+    height: 100vh;
+    top:0;
+    left:0;
+}
+canvas.on{
+  mix-blend-mode: multiply;
+  opacity:0.9;
+}
+.video{
+  position:fixed;
+  z-index: -1;
+  width: 100vw;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.video.on{
+  opacity: 1;
+}
+
+#feed{
+  position:fixed;
+  right:var(--space);
+  bottom:var(--space);
+  z-index: 9;
+  display:none;
+}
+#feed textarea{
+  background-color: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  width: 100%;
+  padding: 5px;
+  margin: 10px 0;
+}
+#feed h1{
+  font-family: "Redacted";
+  margin-bottom:0;
+}
+#feed.on{
+  display: block;
+}
+#feed #thank-you, #feed.submitted h1, #feed.submitted input, #feed.submitted textarea{
+  display: none;
+}
+#feed.submitted #thank-you{
+  display: block;
+}
+::placeholder {
+  color: var(--gold);
+  opacity: 1; /* Firefox */
+}
+
+::-ms-input-placeholder { /* Edge 12 -18 */
+  color: var(--gold);
+}
+#thank-you{
+  font-size: var(--font-small-size);
+}
+#feed input[type=submit]{
+  background-color: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-family: monospace;
+  font-size: var(--font-tiny-size);
+  text-transform: lowercase;
+  cursor: pointer;
+}
+#feed input[type=submit]:hover{
+  opacity: 0.7;
+}
+#list{
+  max-height: 200px;
+  overflow: scroll;
+}
+#zoom {
+  font-size: var(--font-small-size);
+  font-family: 'Redacted';
+  margin: var(--space);
+  text-align: right;
+  position:fixed;
+  bottom:0;
+  width: calc(100% - var(--space) * 2);
+  text-transform: lowercase;
+}
+
+#zoom.on{
+  display: none;
 }
