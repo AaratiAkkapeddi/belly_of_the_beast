@@ -63,8 +63,11 @@ function init() {
                 const model = gltf.scene;
                 // wait until the model can be added to the scene without blocking due to shader compilation
                 model.rotateY(-90)
+
+             
                 await renderer.compileAsync( model, camera, scene );
                 scene.add( model );
+
                 render();
 
                 // document.querySelector("button").addEventListener("click", function(){
@@ -77,17 +80,15 @@ function init() {
 
         loader.load( 'soldier.gltf', async function ( gltf ) {
                 soldier = gltf.scene;
-                
-                // soldier.traverse((o) => {
-                //        original_material = o.material;
-                //          if (o.isMesh) o.material = newMaterial;
-                // })
+                soldier.rotateY(-90)
+           
 
                 // wait until the model can be added to the scene without blocking due to shader compilation
-                soldier.rotateY(-90)
+       
                 
                 await renderer.compileAsync( soldier, camera, scene );
                 scene.add( soldier );
+
                 render();
 
         } );

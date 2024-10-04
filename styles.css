@@ -114,7 +114,21 @@ canvas.on{
   width: calc(100% - var(--space) * 2);
   text-transform: lowercase;
 }
-
+#link-to-book, #link-to-home {
+  font-size: var(--font-small-size);
+  font-family: 'Redacted';
+  margin: var(--space);
+  text-align: left;
+  position:fixed;
+  z-index: 9;
+  top:0;
+  width: calc(100% - var(--space) * 2);
+  text-transform: lowercase;
+}
+#link-to-book a, #link-to-home a{
+  text-decoration: none;
+  color:inherit;
+}
 #zoom.on{
   display: none;
 }
