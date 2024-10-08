@@ -59,7 +59,7 @@ const DotScreenShader = {
 
 			vec4 color = texture2D( tDiffuse, vUv );
 
-			float average = ( color.r + color.g + color.b ) / 3.0;
+			float average = ( color.r + color.g + color.b ) / 2.0;
 
 			gl_FragColor = vec4( vec3(190,  average * 10.0 - 5.0 + pattern(), average * 10.0 - 5.0 + pattern() ), (color.a) );
 
