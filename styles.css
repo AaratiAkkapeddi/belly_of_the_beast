@@ -203,7 +203,7 @@ canvas.on{
   width: 20vw;
 }
 #ceramic{
-  top:0;
+  top:var(--space);
   right:0;
   width: 20vw;
 }

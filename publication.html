@@ -48,10 +48,39 @@
       <img class="gif" id="ceramic" src="assets/tiger2.gif"/>
 
 
-  
+      <p id="about">about</p>
 
 
 
-
+      <div class="modal">
+        <div class="inner">
+        <div id="close"><svg  viewBox="0 0 143 146" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M138.443 14.402L142.914 9.68329L133.476 0.742608L129.006 5.4613L138.443 14.402ZM14.3056 145.436L138.443 14.402L129.006 5.4613L4.86822 136.495L14.3056 145.436Z" fill="#C38500"/>
+          <path d="M4.86822 14.402L0.397881 9.68329L9.83526 0.742608L14.3056 5.4613L4.86822 14.402ZM129.006 145.436L4.86822 14.402L14.3056 5.4613L138.443 136.495L129.006 145.436Z" fill="#C38500"/>
+          </svg>
+          </div>
+        <div>
+          <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum. Maecenas faucibus mollis interdum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+          <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum. Maecenas faucibus mollis interdum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+        </div>
+      </div>
+      </div>
+      <script>
+        document.querySelector("#about").addEventListener("click", function(){
+              let modal = document.querySelector(".modal");
+              if(modal.classList.contains("on")){
+                 modal.classList.remove("on");
+              }else{
+                 modal.classList.add("on")
+              }
+      })
+      document.querySelector("#close").addEventListener("click", function(){
+              let modal = document.querySelector(".modal");
+      
+                 modal.classList.remove("on");
+      
+             
+      })
+      </script>
 </body>
 </html>
