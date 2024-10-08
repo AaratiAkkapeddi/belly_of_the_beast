@@ -8,7 +8,7 @@
 }
 :root{
   --red: rgb(195, 0, 0);
-  --gold: rgb(195, 133, 0);
+  --gold: rgb(241, 217, 165);
   --black: rgb(25, 1, 1);
   --brown: rgb(52, 15, 5);
   --space: 50px;
@@ -67,7 +67,7 @@ canvas.on{
   margin: 10px 0;
 }
 #feed h1{
-  font-family: "Redacted";
+  font-family: "Redacted2";
   margin-bottom:0;
 }
 #feed.on{
@@ -94,7 +94,7 @@ canvas.on{
   background-color: rgb(78, 25, 12,0.5);
   border: 1px solid var(--gold);
   color: var(--gold);
-  font-family: monospace;
+  font-family: sans-serif;
   font-size: var(--font-tiny-size);
   text-transform: lowercase;
   padding:10px;
@@ -112,7 +112,7 @@ canvas.on{
 }
 #zoom {
   font-size: var(--font-small-size);
-  font-family: 'Redacted';
+  font-family: 'Redacted2';
   margin: var(--space);
   text-align: right;
   position:fixed;
@@ -122,7 +122,7 @@ canvas.on{
 }
 #link-to-book, #link-to-home {
   font-size: var(--font-small-size);
-  font-family: 'Redacted';
+  font-family: 'Redacted2';
   margin: var(--space);
   text-align: left;
   position:fixed;
@@ -212,11 +212,18 @@ canvas.on{
   right:var(--space);
   position:fixed;
   z-index: 9;
-  font-family: "Redacted";
+  font-family: "Redacted2";
   font-size: var(--font-small-size);
   text-align: right;
   margin:0;
   cursor: pointer;
+}
+.modal p{
+  font-family: sans-serif;
+  line-height: 1.5;
+}
+.modal a{
+  color:inherit
 }
 #about img{
   width: 18vw;
@@ -239,17 +246,20 @@ canvas.on{
   height: calc(100vh - (var(--space) * 4));
   background: var(--brown);
   padding: var(--space);
+  overflow: scroll;
+  position: relative;
 }
 .modal.on{
   display: flex;
 }
 .modal .inner #close svg{
-  width: 50px;
+  width: 30px;
   cursor: pointer;
 }
 .modal .inner #close{
   text-align:right;
-
+position:absolute;
+right: var(--space);
 }
 @media (max-width: 900px){
   :root{
