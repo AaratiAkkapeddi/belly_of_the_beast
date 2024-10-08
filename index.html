@@ -18,7 +18,10 @@
     <div>
       <div class="video" style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1016218034?badge=0&amp;autopause=0&autoplay=1&muted=1&loop=1&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="belly of the beast"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
       <p id="link-to-book"><a href="./publication.html">view Publication</a></p>
-      <p id="zoom">zoom in to enter the belly of the beast</p>
+      <p id="zoom">
+        <span>zoom in to enter the belly of the beast</span>
+        <span>zoom out to exit the belly of the beast</span>
+      </p>
       <div id='feed'>
         <h1 id="thank-you">recent meals...</h1>
         <textarea placeholder="What/who would you feed the tiger?" id="answer" type="text"></textarea>
@@ -31,7 +34,6 @@
     <img class="gif" id="ceramic" src="assets/tiger2.gif"/>
 
     <p id="about">about</p>
-    <script type="module" src="main.js"></script>
     <div class="modal">
       <div class="inner">
       <div id="close"><svg  viewBox="0 0 143 146" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -45,5 +47,9 @@
       </div>
     </div>
     </div>
+    <script type="module" src="custom/myDot.js"></script>
+
+    <script type="module" src="main.js"></script>
+
 </body>
 </html>

@@ -2,7 +2,15 @@ import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
-let camera, scene, renderer;
+import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
+
+import { RGBShiftShader } from 'three/addons/shaders/RGBShiftShader.js';
+import { DotScreenShader } from './custom/myDot.js';
+import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
+
+let camera, scene, renderer,composer;
 let soldier;
 
 
@@ -73,7 +81,7 @@ function init() {
                 await renderer.compileAsync( model, camera, scene );
                 let wireFrameModel = model.clone();
                 wireFrameModel?.traverse((o) => {
-                        if (o.isMesh) o.material = new THREE.MeshBasicMaterial({color: 0xc30000, wireframe: true, emissive: true});     ;
+                        if (o.isMesh) o.material = new THREE.MeshBasicMaterial({color: 0xc30000, wireframe: true});     ;
                 })  
                 scene.add( model );
                 // scene.add(wireFrameModel)
@@ -129,6 +137,8 @@ function init() {
                 var zoom = controls.target.distanceTo( controls.object.position )
                 if(zoom < 0.5){
                         document.querySelector(".video").classList.add("on")
+                        document.querySelector("#about").classList.add("on")
+                        document.querySelector("#link-to-book").classList.add("on")
                         document.querySelector("canvas").classList.add("on")
                         document.querySelector("#zoom").classList.add("on")
                         document.querySelector("#feed").classList.add("on")
@@ -140,9 +150,28 @@ function init() {
                         document.querySelector("canvas").classList.remove("on")
                         document.querySelector("#zoom").classList.remove("on")
                         document.querySelector("#feed").classList.remove("on")
+                        document.querySelector("#about").classList.remove("on")
+                        document.querySelector("#link-to-book").classList.remove("on")
                 }
         })
         controls.update()
+        // postprocessing
+
+				composer = new EffectComposer( renderer );
+				composer.addPass( new RenderPass( scene, camera ) );
+
+				const effect1 = new ShaderPass( DotScreenShader );
+				effect1.uniforms[ 'scale' ].value = 4;
+				composer.addPass( effect1 );
+
+				// const effect2 = new ShaderPass( RGBShiftShader );
+				// effect2.uniforms[ 'amount' ].value = 0.0015;
+				// composer.addPass( effect2 );
+
+				// const effect3 = new OutputPass();
+				// composer.addPass( effect3 );
+
+				//
         window.addEventListener( 'resize', onWindowResize );
 
         function animate() {
@@ -157,8 +186,8 @@ function init() {
     
                 // required if controls.enableDamping or controls.autoRotate are set to true
                 controls.update();
-
-                renderer.render( scene, camera );
+                composer.render();
+                // renderer.render( scene, camera );
 
         }
         animate()
