@@ -4,10 +4,11 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
 let camera, scene, renderer;
 let soldier;
-let wireframe = false;
+
 
 const submitForm = () => {
         let answer = (document.getElementById("answer")).value;
+        answer = answer.trim();
        if(answer?.length>0){
         let formData;
         formData = new FormData();
@@ -19,6 +20,7 @@ const submitForm = () => {
           if (xhr.status === 200) {
             console.log("Form submitted successfully");
             document.querySelector("#feed").classList.add("submitted");
+            (document.getElementById("answer")).value = "";
             let url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRDCwu9PBQFqCvShGXvqwEUCteZ-TVuKKWMZq2fBOX7jenh9kEcvKqRnf9HQdJ70pCj56XzvvgtXBlX/pub?gid=0&single=true&output=csv"
             let xmlhttp=new XMLHttpRequest();
                 xmlhttp.onreadystatechange = function() {
@@ -46,7 +48,10 @@ function init() {
         const container = document.createElement( 'div' );
         document.body.appendChild( container );
         camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.25, 20 );
-        camera.position.set( 0, 0.5, 4 );
+        camera.position.set( 0, 0.5, 3.7 );
+        if(window.innerWidth < 900){
+                camera.position.set( 0,0.5, 10 );
+        }
         scene = new THREE.Scene();
         scene.background = null;
 
@@ -107,7 +112,11 @@ function init() {
 
         controls.minAzimuthAngle = Math.PI/4
         controls.maxAzimuthAngle = Math.PI/1.5
-        controls.maxDistance = 10;
+        controls.maxDistance = 5;
+        if(window.innerWidth < 900){
+                controls.maxDistance = 12;
+        }
+       
         controls.addEventListener("change", function(){
                 var zoom = controls.target.distanceTo( controls.object.position )
                 if(zoom < 0.5){
@@ -162,7 +171,21 @@ function onWindowResize() {
 
 function render() {
         renderer.render( scene, camera );
-
 }
 
 
+document.querySelector("#about").addEventListener("click", function(){
+        let modal = document.querySelector(".modal");
+        if(modal.classList.contains("on")){
+           modal.classList.remove("on");
+        }else{
+           modal.classList.add("on")
+        }
+})
+document.querySelector("#close").addEventListener("click", function(){
+        let modal = document.querySelector(".modal");
+
+           modal.classList.remove("on");
+
+       
+})

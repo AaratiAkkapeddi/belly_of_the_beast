@@ -10,11 +10,11 @@
   --red: rgb(195, 0, 0);
   --gold: rgb(195, 133, 0);
   --black: rgb(25, 1, 1);
-  --brown: rgb(78, 25, 12);
+  --brown: rgb(52, 15, 5);
   --space: 50px;
   --font-size-large: 50px;
   --font-small-size: 24px;
-  --font-tiny-size: 14px;
+  --font-tiny-size: 20px;
 }
 
 
@@ -40,6 +40,7 @@ canvas.on{
 .video{
   position:fixed;
   z-index: -1;
+  pointer-events: none;
   width: 100vw;
   opacity: 0;
   transition: opacity 0.2s;
@@ -57,11 +58,12 @@ canvas.on{
   display:none;
 }
 #feed textarea{
-  background-color: transparent;
+  background-color: rgb(78, 25, 12,0.5);
   border: 1px solid var(--gold);
   color: var(--gold);
+  font-size: var(--font-tiny-size);
   width: 100%;
-  padding: 5px;
+  padding: 10px;
   margin: 10px 0;
 }
 #feed h1{
@@ -89,12 +91,13 @@ canvas.on{
   font-size: var(--font-small-size);
 }
 #feed input[type=submit]{
-  background-color: transparent;
+  background-color: rgb(78, 25, 12,0.5);
   border: 1px solid var(--gold);
   color: var(--gold);
   font-family: monospace;
   font-size: var(--font-tiny-size);
   text-transform: lowercase;
+  padding:10px;
   cursor: pointer;
 }
 #feed input[type=submit]:hover{
@@ -102,6 +105,9 @@ canvas.on{
 }
 #list{
   max-height: 200px;
+  overflow: hidden;
+}
+#feed.submitted #list{
   overflow: scroll;
 }
 #zoom {
@@ -131,4 +137,144 @@ canvas.on{
 }
 #zoom.on{
   display: none;
+}
+
+
+
+/* PUBLICATION PAGE */
+.gallery-container {
+  width: 100%;
+  position: relative;
+}
+.gallery-container canvas{
+  position: relative;
+  width: 35vw!important;
+  height: 35vw !important;
+}
+.gallery-container div:nth-child(3) canvas{
+  position: relative;
+  width: 50vw!important;
+  height: 50vw !important;
+}
+.gallery-container div{
+  display: inline-block;
+  vertical-align: middle;
+  position: absolute;
+}
+.gallery-container div:nth-child(3){
+  right:0;
+  z-index: 0;
+}
+.gallery-container div:nth-child(2){
+  left:35vw;
+  z-index: 1;
+}
+.gallery-container div:nth-child(1){
+  left: calc(var(--space)*2);
+}
+.photo-slides img{
+ width: calc(100% - var(--space) * 8);
+ margin-top: var(--space);
+}
+.photo-slides{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 8;
+  position: fixed;
+  top:0;
+  left:0;
+  width: 100vw;
+  height: 100vh;
+  overflow: scroll;
+}
+.gif{
+  width: 15vw;
+  position: fixed;
+  z-index: 8;
+
+}
+#accordion{
+  bottom:var(--space);
+  right:0;
+}
+#book{
+  top: 35vh;
+  width: 20vw;
+}
+#ceramic{
+  top:0;
+  right:0;
+  width: 20vw;
+}
+#about{
+  top:var(--space);
+  right:var(--space);
+  position:fixed;
+  z-index: 9;
+  font-family: "Redacted";
+  font-size: var(--font-small-size);
+  text-align: right;
+  margin:0;
+  cursor: pointer;
+}
+#about img{
+  width: 18vw;
+}
+.modal{
+  display: none;
+  position:fixed;
+  top:0;
+  left:0;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  font-family: "Redacted2";
+  font-size: var(--font-small-size);
+  z-index: 9;
+}
+.modal .inner{
+  width: 70%;
+  height: calc(100vh - (var(--space) * 4));
+  background: var(--brown);
+  padding: var(--space);
+}
+.modal.on{
+  display: flex;
+}
+.modal .inner #close svg{
+  width: 50px;
+  cursor: pointer;
+}
+.modal .inner #close{
+  text-align:right;
+
+}
+@media (max-width: 900px){
+  :root{
+    --space: 20px;
+    --font-size-large: 30px;
+    --font-small-size: 18px;
+    --font-tiny-size: 16px;
+  }
+
+  .photo-slides img{
+    width: calc(100% - var(--space) * 8);
+    margin-top: var(--space);
+   }
+   .modal .inner #close svg{
+    width: 30px;
+  }
+   body{
+    overflow-x: hidden;
+   }
+   .video{
+    height: 100vh;
+    width: 300vh;
+    transform:translateX(-30%);
+    opacity: 0;
+    top:0;
+    transition: opacity 0.2s;
+  }
 }
