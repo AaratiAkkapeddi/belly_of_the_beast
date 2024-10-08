@@ -72,17 +72,18 @@ function init() {
         // model
          
         const loader = new GLTFLoader().setPath( 'assets/' );
-        loader.load( 'red_tiger.gltf', async function ( gltf ) {
+        loader.load( 'tiger_test.gltf', async function ( gltf ) {
                 const model = gltf.scene;
                 // wait until the model can be added to the scene without blocking due to shader compilation
                 model.rotateY(-90)
 
                 
                 await renderer.compileAsync( model, camera, scene );
-                let wireFrameModel = model.clone();
-                wireFrameModel?.traverse((o) => {
-                        if (o.isMesh) o.material = new THREE.MeshBasicMaterial({color: 0xc30000, wireframe: true});     ;
-                })  
+                model.traverse((o) => {
+                        if (o.isMesh) o.material.extensions = {
+                                derivatives: true
+                             };
+                })   
                 scene.add( model );
                 // scene.add(wireFrameModel)
                 render();
@@ -95,16 +96,18 @@ function init() {
      
         } );
 
-        loader.load( 'red_soldier.gltf', async function ( gltf ) {
+        loader.load( 'soldier_test.gltf', async function ( gltf ) {
                 soldier = gltf.scene;
                 soldier.rotateY(-90)
            
 
                 // wait until the model can be added to the scene without blocking due to shader compilation
        
-                let wireFrameModel = soldier.clone();
-                wireFrameModel?.traverse((o) => {
-                        if (o.isMesh) o.material = new THREE.MeshBasicMaterial({color: 0xc30000, wireframe: true, transparent: true, opacity: 0.5});     ;
+
+                soldier.traverse((o) => {
+                        if (o.isMesh) o.material.extensions = {
+                                derivatives: true
+                             };
                 })  
                 await renderer.compileAsync( soldier, camera, scene );
                 scene.add( soldier );
@@ -118,9 +121,11 @@ function init() {
         // controls.update();
 
         renderer = new THREE.WebGLRenderer( { antialias: true, alpha: true } );
+
         renderer.setPixelRatio( window.devicePixelRatio );
         renderer.setSize( window.innerWidth, window.innerHeight );
         container.appendChild( renderer.domElement );
+        renderer.context?.getExtension('OES_standard_derivatives');
 
         const controls = new OrbitControls( camera, renderer.domElement );
         controls.maxPolarAngle = Math.PI/2; 
@@ -186,6 +191,7 @@ function init() {
     
                 // required if controls.enableDamping or controls.autoRotate are set to true
                 controls.update();
+                // console.log(navigator.userAgent.toLowerCase() )
                 composer.render();
                 // renderer.render( scene, camera );
 

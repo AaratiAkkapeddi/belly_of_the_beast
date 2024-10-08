@@ -120,6 +120,7 @@ canvas.on{
   text-align: center;
   position:fixed;
   bottom:0;
+  z-index: 9;
   width: calc(100% - var(--space) * 2);
   text-transform: lowercase;
 }
@@ -281,7 +282,11 @@ right: var(--space);
     --font-small-size: 18px;
     --font-tiny-size: 16px;
   }
-
+  #ceramic{
+    top:calc(var(--space)* 2);
+    right:0;
+    width: 20vw;
+  }
   .photo-slides img{
     width: calc(100% - var(--space) * 8);
     margin-top: var(--space);
