@@ -64,15 +64,19 @@ function init() {
         // model
          
         const loader = new GLTFLoader().setPath( 'assets/' );
-        loader.load( 'tiger.gltf', async function ( gltf ) {
+        loader.load( 'red_tiger.gltf', async function ( gltf ) {
                 const model = gltf.scene;
                 // wait until the model can be added to the scene without blocking due to shader compilation
                 model.rotateY(-90)
 
-             
+                
                 await renderer.compileAsync( model, camera, scene );
+                let wireFrameModel = model.clone();
+                wireFrameModel?.traverse((o) => {
+                        if (o.isMesh) o.material = new THREE.MeshBasicMaterial({color: 0xc30000, wireframe: true, emissive: true});     ;
+                })  
                 scene.add( model );
-
+                // scene.add(wireFrameModel)
                 render();
 
                 // document.querySelector("button").addEventListener("click", function(){
@@ -83,16 +87,20 @@ function init() {
      
         } );
 
-        loader.load( 'soldier.gltf', async function ( gltf ) {
+        loader.load( 'red_soldier.gltf', async function ( gltf ) {
                 soldier = gltf.scene;
                 soldier.rotateY(-90)
            
 
                 // wait until the model can be added to the scene without blocking due to shader compilation
        
-                
+                let wireFrameModel = soldier.clone();
+                wireFrameModel?.traverse((o) => {
+                        if (o.isMesh) o.material = new THREE.MeshBasicMaterial({color: 0xc30000, wireframe: true, transparent: true, opacity: 0.5});     ;
+                })  
                 await renderer.compileAsync( soldier, camera, scene );
                 scene.add( soldier );
+                // scene.add( wireFrameModel );
 
                 render();
 

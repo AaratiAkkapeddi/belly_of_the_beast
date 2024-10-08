@@ -1,16 +1,15 @@
-@font-face {
-  font-family: "Redacted";
-  src: url('assets/Redaction_70-Bold.woff2') format("woff2");
-}
+
 @font-face {
   font-family: "Redacted2";
   src: url('assets/Redaction_35-Regular.woff2') format("woff2");
 }
+@import url('https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&display=swap');
+
 :root{
-  --red: rgb(195, 0, 0);
-  --gold: rgb(241, 217, 165);
-  --black: rgb(25, 1, 1);
-  --brown: rgb(52, 15, 5);
+  --red: #c30000;
+  --gold: rgb(195, 0, 0);
+  --black: #D7D5D0;
+  --brown: rgba(215, 213, 208,0.9);
   --space: 50px;
   --font-size-large: 50px;
   --font-small-size: 24px;
@@ -34,7 +33,7 @@ canvas{
     left:0;
 }
 canvas.on{
-  mix-blend-mode: multiply;
+  mix-blend-mode: color;
   opacity:0.9;
 }
 .video{
@@ -58,7 +57,7 @@ canvas.on{
   display:none;
 }
 #feed textarea{
-  background-color: rgb(78, 25, 12,0.5);
+  background-color: var(--brown);
   border: 1px solid var(--gold);
   color: var(--gold);
   font-size: var(--font-tiny-size);
@@ -91,10 +90,10 @@ canvas.on{
   font-size: var(--font-small-size);
 }
 #feed input[type=submit]{
-  background-color: rgb(78, 25, 12,0.5);
+  background-color: var(--brown);
   border: 1px solid var(--gold);
   color: var(--gold);
-  font-family: sans-serif;
+  font-family: "Afacad Flux", sans-serif;
   font-size: var(--font-tiny-size);
   text-transform: lowercase;
   padding:10px;
@@ -114,7 +113,7 @@ canvas.on{
   font-size: var(--font-small-size);
   font-family: 'Redacted2';
   margin: var(--space);
-  text-align: right;
+  text-align: center;
   position:fixed;
   bottom:0;
   width: calc(100% - var(--space) * 2);
@@ -219,7 +218,7 @@ canvas.on{
   cursor: pointer;
 }
 .modal p{
-  font-family: sans-serif;
+  font-family: "Afacad Flux", sans-serif;
   line-height: 1.5;
 }
 .modal a{
