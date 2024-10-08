@@ -58,6 +58,7 @@ canvas.on{
   bottom:var(--space);
   z-index: 9;
   display:none;
+  color:var(--black);
 }
 #feed textarea{
   background-color: var(--brown);
@@ -146,10 +147,10 @@ canvas.on{
 
 #zoom.on span:last-child{
   display: block;
-  color:white;
+  color:var(--black);
 }
 #link-to-book.on, #about.on{
-  color:white;
+  color:var(--black);
 }
 
 
