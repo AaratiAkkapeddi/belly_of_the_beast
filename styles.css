@@ -294,6 +294,10 @@ right: var(--space);
    .modal .inner #close svg{
     width: 30px;
   }
+  #feed{
+    right: calc(var(--space)* 3);
+    bottom: calc(var(--space) * 3)
+  }
    body{
     overflow-x: hidden;
    }
