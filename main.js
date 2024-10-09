@@ -88,11 +88,7 @@ function init() {
                 // scene.add(wireFrameModel)
                 render();
 
-                // document.querySelector("button").addEventListener("click", function(){
-                //                    model?.traverse((o) => {
-                //                 if (o.isMesh) o.material.wireframe = true;
-                //         })  
-                // })
+
      
         } );
 
@@ -203,6 +199,13 @@ function init() {
 
 function onWindowResize() {
 
+        if(window.innerWidth/window.innerHeight >= 1.777){
+                document.querySelector(".video iframe").style.width = "100vw";
+                document.querySelector(".video iframe").style.height = "calc(100vw / 1.7777)";
+        }else{
+                document.querySelector(".video iframe").style.width = "calc(100vh * 1.7777)";
+                document.querySelector(".video iframe").style.height = "calc(100vh)";
+        }
         camera.aspect = window.innerWidth / window.innerHeight;
         camera.updateProjectionMatrix();
 
