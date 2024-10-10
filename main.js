@@ -15,6 +15,7 @@ let soldier;
 
 
 const submitForm = () => {
+        document.querySelector("#loading").classList.add('on');
         let answer = (document.getElementById("answer")).value;
         answer = answer.trim();
        if(answer?.length>0){
@@ -34,7 +35,8 @@ const submitForm = () => {
                 xmlhttp.onreadystatechange = function() {
                 if(xmlhttp.readyState == 4 && xmlhttp.status==200){
                    console.log(xmlhttp.responseText)
-                   document.getElementById("list").innerHTML = "<br>" + xmlhttp.responseText.replace(/(?:\r\n|\r|\n)/g, '<br>');
+                   document.getElementById("list").innerHTML = "<br>" + xmlhttp.responseText.replace(/(?:\r\n|\r|\n)/g, '<br>').split("<br>").reverse().join("<br>");
+                   document.querySelector("#loading").classList.remove('on');
                 }
                 };
                 xmlhttp.open("GET",url,true);
@@ -52,6 +54,13 @@ const submitForm = () => {
 init();
 
 function init() {
+        if(window.innerWidth/window.innerHeight >= 1.777){
+                document.querySelector(".video iframe").style.width = "100vw";
+                document.querySelector(".video iframe").style.height = "calc(100vw / 1.7777)";
+        }else{
+                document.querySelector(".video iframe").style.width = "calc(100vh * 1.7777)";
+                document.querySelector(".video iframe").style.height = "calc(100vh)";
+        }
         document.querySelector("#submit").addEventListener("click", submitForm)
         const container = document.createElement( 'div' );
         document.body.appendChild( container );

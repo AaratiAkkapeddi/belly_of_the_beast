@@ -68,6 +68,14 @@ canvas.on{
   display:none;
   color:var(--black);
 }
+#feed #loading{
+  display: none;
+  font-size: var(--font-tiny-size);
+  font-family:"Afacad Flux", sans-serif;
+}
+#feed #loading.on{
+  display: block;
+}
 #feed textarea{
   background-color: var(--brown);
   border: 1px solid var(--gold);
