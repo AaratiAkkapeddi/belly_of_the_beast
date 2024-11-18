@@ -124,6 +124,7 @@ canvas.on{
 }
 #list{
   max-height: 200px;
+  max-width: 250px;
   overflow: hidden;
 }
 #feed.submitted #list{
