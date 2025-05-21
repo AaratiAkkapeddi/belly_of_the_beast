@@ -1,0 +1,334 @@
+
+@font-face {
+  font-family: "Redacted2";
+  src: url('../assets/Redaction_35-Regular.woff2') format("woff2");
+}
+@import url('https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&display=swap');
+
+:root{
+  --red: #c30000;
+  --gold: rgb(195, 0, 0);
+  --black: #D7D5D0;
+  --brown: rgba(215, 213, 208,0.9);
+  --space: 50px;
+  --font-size-large: 50px;
+  --font-small-size: 24px;
+  --font-tiny-size: 20px;
+}
+
+
+body{
+    background-color: var(--black);
+    margin:0;
+    color: var(--gold);
+}
+canvas{
+    background-color: rgba(0,0,0,0);
+    opacity:1;
+    transition:0.2s;
+    position: fixed;
+    width:100vw;
+    height: 80vh;
+    top:0;
+    filter: brightness(60%) contrast(200%);
+    mix-blend-mode: color-burn;
+    left:0;
+
+}
+canvas.on{
+  mix-blend-mode: color-burn;
+  opacity:0.55;
+}
+.video{
+  position:fixed;
+  z-index: -1;
+  pointer-events: none;
+  height: 100vh;
+  width: 100vw;
+  opacity: 0;
+  top:0;
+  transition: opacity 0.2s;
+}
+.video iframe{
+  width: 100vw;
+  height: calc(100vw /1.7777);
+  position:absolute;
+  top:0;
+  left:50%;
+  transform: translateX(-50%);
+}
+.video.on{
+  opacity: 1;
+}
+
+#feed{
+  position:fixed;
+  right:var(--space);
+  bottom:var(--space);
+  z-index: 9;
+  display:none;
+  color:var(--black);
+}
+#feed #loading{
+  display: none;
+  font-size: var(--font-tiny-size);
+  font-family:"Afacad Flux", sans-serif;
+}
+#feed #loading.on{
+  display: block;
+}
+#feed textarea{
+  background-color: var(--brown);
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-size: var(--font-tiny-size);
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+}
+#feed h1{
+  font-family: "Redacted2";
+  margin-bottom:0;
+}
+#feed.on{
+  display: block;
+}
+#feed #thank-you, #feed.submitted h1, #feed.submitted input, #feed.submitted textarea{
+  display: none;
+}
+#feed.submitted #thank-you{
+  display: block;
+}
+::placeholder {
+  color: var(--gold);
+  opacity: 1; /* Firefox */
+}
+
+::-ms-input-placeholder { /* Edge 12 -18 */
+  color: var(--gold);
+}
+#thank-you{
+  font-size: var(--font-small-size);
+}
+#feed input[type=submit]{
+  background-color: var(--brown);
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-family: "Afacad Flux", sans-serif;
+  font-size: var(--font-tiny-size);
+  text-transform: lowercase;
+  padding:10px;
+  cursor: pointer;
+}
+#feed input[type=submit]:hover{
+  opacity: 0.7;
+}
+#list{
+  max-height: 200px;
+  max-width: 250px;
+  overflow: hidden;
+}
+#feed.submitted #list{
+  overflow: scroll;
+}
+#zoom {
+  font-size: var(--font-small-size);
+  font-family: 'Redacted2';
+  margin: var(--space);
+  text-align: center;
+  position:fixed;
+  bottom:0;
+  z-index: 9;
+  width: calc(100% - var(--space) * 2);
+  text-transform: lowercase;
+}
+#zoom span:last-child{
+  display: none;
+}
+#link-to-book, #link-to-home {
+  font-size: var(--font-small-size);
+  font-family: 'Redacted2';
+  margin: var(--space);
+  text-align: left;
+  position:fixed;
+  z-index: 9;
+  top:0;
+  width: calc(100% - var(--space) * 2);
+  text-transform: lowercase;
+}
+#link-to-book a, #link-to-home a{
+  text-decoration: none;
+  color:inherit;
+}
+#zoom.on span:first-child{
+  display: none;
+}
+
+#zoom.on span:last-child{
+  display: block;
+  color:var(--black);
+}
+#link-to-book.on, #about.on{
+  color:var(--black);
+}
+
+
+/* PUBLICATION PAGE */
+.gallery-container {
+  width: 100%;
+  position: relative;
+}
+.gallery-container canvas{
+  position: relative;
+  width: 35vw!important;
+  height: 35vw !important;
+}
+.gallery-container div:nth-child(3) canvas{
+  position: relative;
+  width: 50vw!important;
+  height: 50vw !important;
+}
+.gallery-container div{
+  display: inline-block;
+  vertical-align: middle;
+  position: absolute;
+}
+.gallery-container div:nth-child(3){
+  right:0;
+  z-index: 0;
+}
+.gallery-container div:nth-child(2){
+  left:35vw;
+  z-index: 1;
+}
+.gallery-container div:nth-child(1){
+  left: calc(var(--space)*2);
+}
+.photo-slides img{
+ width: calc(100% - var(--space) * 8);
+ margin-top: var(--space);
+}
+.photo-slides{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 8;
+  position: fixed;
+  top:0;
+  left:0;
+  width: 100vw;
+  height: 100vh;
+  overflow: scroll;
+}
+.gif{
+  width: 15vw;
+  position: fixed;
+  z-index: 8;
+
+}
+#accordion{
+  bottom:var(--space);
+  right:0;
+}
+#book{
+  top: 35vh;
+  width: 20vw;
+}
+#ceramic{
+  /* top:var(--space); */
+  right:0;
+  width: 20vw;
+}
+#scroller{
+  content: "";
+  width: 100vw;
+  height: 120vh;
+  position: relative;
+  opacity: 0;
+}
+#about{
+  top:var(--space);
+  left:var(--space);
+  position:fixed;
+  z-index: 9;
+  font-family: "Redacted2";
+  font-size: var(--font-small-size);
+  text-align: right;
+  margin:0;
+  cursor: pointer;
+}
+.modal p{
+  font-family: "Afacad Flux", sans-serif;
+  line-height: 1.5;
+}
+.modal a{
+  color:inherit
+}
+#about img{
+  width: 18vw;
+}
+.modal{
+  display: none;
+  position:fixed;
+  top:0;
+  left:0;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  font-family: "Redacted2";
+  font-size: var(--font-small-size);
+  z-index: 9;
+}
+.modal .inner{
+  width: 70%;
+  height: calc(100vh - (var(--space) * 4));
+  background: var(--brown);
+  padding: var(--space);
+  overflow: scroll;
+  position: relative;
+}
+.modal.on{
+  display: flex;
+}
+.modal .inner #close svg{
+  width: 30px;
+  cursor: pointer;
+}
+.modal .inner #close{
+  text-align:right;
+position:absolute;
+right: var(--space);
+}
+@media (max-width: 900px){
+  :root{
+    --space: 20px;
+    --font-size-large: 30px;
+    --font-small-size: 18px;
+    --font-tiny-size: 16px;
+  }
+  #ceramic{
+    top:calc(var(--space)* 2);
+    right:0;
+    width: 20vw;
+  }
+  .video iframe{
+      width: calc(100vh * 1.7777);
+      height: 100vh;
+  }
+  .photo-slides img{
+    width: calc(100% - var(--space) * 8);
+    margin-top: var(--space);
+   }
+   .modal .inner #close svg{
+    width: 30px;
+  }
+  #feed{
+    right: calc(var(--space)* 3);
+    bottom: calc(var(--space) * 3)
+  }
+   body{
+    overflow-x: hidden;
+   }
+   
+}

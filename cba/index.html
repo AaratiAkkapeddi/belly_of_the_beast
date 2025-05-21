@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>In The Belly of The Beast</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="importmap">
+        {
+          "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.168.0/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.168.0/examples/jsm/"
+          }
+        }
+      </script>
+</head>
+<body>
+  <div id="scroller"></div>
+    <div>
+      <div class="video" ><iframe src="https://player.vimeo.com/video/1016218034?badge=0&amp;autopause=0&controls=0&autoplay=1&muted=1&loop=1&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" title="belly of the beast"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+      <p id="zoom">
+        <span>zoom in to enter the belly of the beast</span>
+        <span>zoom out to exit the belly of the beast</span>
+      </p>
+      <div id='feed'>
+        <h1 id="thank-you">recent meals...</h1>
+        <textarea placeholder="What/who would you feed the tiger?" id="answer" type="text"></textarea>
+        <div id="loading">digesting...</div>
+        <div id="list"></div>
+        <input id="submit" type="submit" value="submit">
+      </div>
+
+
+    </div>
+    <!-- <img class="gif" id="ceramic" src="../assets/tiger2.gif"/> -->
+
+    <!-- <p id="about">about</p> -->
+    <div class="modal">
+      <div class="inner">
+      <div id="close"><svg  viewBox="0 0 143 146" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M138.443 14.402L142.914 9.68329L133.476 0.742608L129.006 5.4613L138.443 14.402ZM14.3056 145.436L138.443 14.402L129.006 5.4613L4.86822 136.495L14.3056 145.436Z" fill="#c30000"/>
+        <path d="M4.86822 14.402L0.397881 9.68329L9.83526 0.742608L14.3056 5.4613L4.86822 14.402ZM129.006 145.436L4.86822 14.402L14.3056 5.4613L138.443 136.495L129.006 145.436Z" fill="#c30000"/>
+        </svg>
+        </div>
+      <div>
+        <h1>In The Belly of the Beast</h1>
+        <p><em>In the Belly of the Beast</em> is a multifaceted artwork that includes an interactive website, two artist books, and porcelain bookends. The work is inspired by Tipu's Tiger, a famous automaton depicting a tiger mauling a British soldier, which was seized from Tipu Sultan in 1799 and now resides at the V&A Museum in London. A central feature of the website is a 3D scan of Tipu's Tiger, captured using my cell phone. When visitors explore the interior of the tiger's belly, they encounter videos, including footage of the Robert Clive statue in London and the Clive Museum at Powis Castle, Wales, among others. While inside the "belly of the beast," viewers are invited to symbolically "feed the tiger."
+</p><p>
+          Robert Clive, a key figure in establishing the British East India Company's rule in India, is associated with the Bengal famine, during which nearly 3 million people died of starvation. The Clive collection at Powis Castle contains many of Tipu Sultan’s personal belongings.
+      </p><p> 
+          One of the accompanying artist books is an accordion-fold design, modeled after Tipu's Tiger but reimagined in an upright position. When opened, the book splits the tiger's belly, revealing the figure of Robert Clive. The porcelain bookends were cast from 3D-printed molds of the repositioned tiger scan. The larger book delves into themes such as tiger hunting in colonial India, the tiger as a symbol of resistance and strength, and the broader meaning of being "in the belly of the beast."</p>
+      </div>
+    </div>
+    </div>
+    <script type="module" src="custom/myDot.js"></script>
+
+    <script type="module" src="main.js"></script>
+
+</body>
+</html>
